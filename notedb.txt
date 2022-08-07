@@ -1,0 +1,14 @@
+user
+username
+kodesatker
+nama satker
+
+seputarikpa 
+judul
+image
+content
+
+seputardjpb
+judul
+image
+content
