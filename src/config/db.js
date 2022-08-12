@@ -5,8 +5,14 @@ module.exports = {
     "password": process.env.PASS,
     "database": process.env.DB,
     "host": process.env.HOST,
+    "port": process.env.PORT,
     "dialect": "postgres",
+    "ssl": true,
     "dialectOptions": {
+        ssl: {
+            require: true,
+            rejectUnauthorized: false 
+          },
             host: process.env.HOST,
             user: process.env.UNAME,
             password: process.env.PASS,
@@ -19,27 +25,39 @@ module.exports = {
     "password": process.env.PASS,
     "database": process.env.DB,
     "host": process.env.HOST,
+    "port": process.env.PORT,
     "dialect": "postgres",
+    "ssl": true,
     "dialectOptions": {
-        host: process.env.HOST,
-        user: process.env.UNAME,
-        password: process.env.PASS,
-        database: process.env.DB,
-        connectTimeout: 20000
-  },
+        ssl: {
+            require: true,
+            rejectUnauthorized: false 
+          },
+            host: process.env.HOST,
+            user: process.env.UNAME,
+            password: process.env.PASS,
+            database: process.env.DB,
+            connectTimeout: 20000
+      },
 },
 "production": {
     "username": process.env.UNAME,
     "password": process.env.PASS,
     "database": process.env.DB,
     "host": process.env.HOST,
+    "port": process.env.PORT,
     "dialect": "postgres",
+    "ssl": true,
     "dialectOptions": {
-        host: process.env.HOST,
-        user: process.env.UNAME,
-        password: process.env.PASS,
-        database: process.env.DB,
-        connectTimeout: 20000
-  },
-}
+        ssl: {
+            require: true,
+            rejectUnauthorized: false 
+          },
+            host: process.env.HOST,
+            user: process.env.UNAME,
+            password: process.env.PASS,
+            database: process.env.DB,
+            connectTimeout: 20000
+      },
+},
 };
