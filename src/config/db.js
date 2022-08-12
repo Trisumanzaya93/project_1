@@ -5,7 +5,7 @@ module.exports = {
     "password": process.env.PASS,
     "database": process.env.DB,
     "host": process.env.HOST,
-    "port": process.env.PORT,
+    "port": process.env.PORTDB,
     "dialect": "postgres",
     "ssl": true,
     "dialectOptions": {
@@ -25,7 +25,7 @@ module.exports = {
     "password": process.env.PASS,
     "database": process.env.DB,
     "host": process.env.HOST,
-    "port": process.env.PORT,
+    "port": process.env.PORTDB,
     "dialect": "postgres",
     "ssl": true,
     "dialectOptions": {
@@ -45,7 +45,7 @@ module.exports = {
     "password": process.env.PASS,
     "database": process.env.DB,
     "host": process.env.HOST,
-    "port": process.env.PORT,
+    "port": process.env.PORTDB,
     "dialect": "postgres",
     "ssl": true,
     "dialectOptions": {
