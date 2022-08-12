@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   seputardjbp.init({
     title: DataTypes.STRING,
     image: DataTypes.STRING,
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    id_admin:DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'seputardjbp',

@@ -17,7 +17,8 @@ module.exports = (sequelize, DataTypes) => {
     title: DataTypes.STRING,
     description: DataTypes.STRING,
     timer: DataTypes.DATE,
-    id_admin: DataTypes.INTEGER
+    id_admin: DataTypes.INTEGER,
+    id_user: DataTypes.INTEGER
   }, {
     sequelize,
     modelName: 'Alarm',

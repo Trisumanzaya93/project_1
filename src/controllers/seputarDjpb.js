@@ -10,14 +10,14 @@ const createContent =async(req,res)=>{
         ...body,
         image: image.path,
       };
-      const result = await model.seputarikpa.create(newBody);
+      const result = await model.seputardjbp.create(newBody);
       return response(res, {
         data: result,
         status: 200,
         message: "mantapp",
       });
     }
-    const result = await model.seputarikpa.create(body);
+    const result = await model.seputardjbp.create(body);
     return response(res, {
       data: result,
       status: 200,
@@ -36,7 +36,7 @@ const createContent =async(req,res)=>{
 const getAllSeputarikpa = async(req, res) => {
   try {
     const {id_admin} =req.params
-    const result = await model.seputarikpa.findAll({where:{id_admin}})
+    const result = await model.seputardjbp.findAll({where:{id_admin}})
     return response(res, {
       data: result,
       status: 200,
@@ -55,7 +55,7 @@ const getAllSeputarikpa = async(req, res) => {
 const getContentById = async(req, res) => {
   try {
     const {id} = req.params
-    const result = await model.seputarikpa.findOne({where:{id}})
+    const result = await model.seputardjbp.findOne({where:{id}})
     if(result===null) return response(res,{status:404,message:"data tidak ada"})
     return response(res, {
       data: result,
@@ -74,7 +74,7 @@ const getContentById = async(req, res) => {
 const deleteContentById = async(req, res) => {
   try {
     const {id} = req.params
-    const result = await model.seputarikpa.destroy({where:{id}})
+    const result = await model.seputardjbp.destroy({where:{id}})
     return response(res, {
       data: result,
       status: 200,

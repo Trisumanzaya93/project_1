@@ -52,7 +52,7 @@ const login = async (req,res)=>{
       username: result.username,
   };
   const jwtOptions = {
-      expiresIn: "10h",
+      expiresIn: "10y",
   };
   const token = jwt.sign(payload, process.env.SECRET_KEY, jwtOptions);
     return response(res, {
@@ -68,6 +68,24 @@ const login = async (req,res)=>{
     });
   }
 }
+const getAllUserByAdmin = async (req, res)=>{
+  try {
+    const id_admin = 3
+    const result = await model.users.findAll({where:{id_admin},attributes:["id","id_admin","username","kodesatker","namasatker"]})
+
+    return response(res, {
+      data: result,
+      status: 200,
+      message: "mantapp",
+    });
+  } catch (error) {
+    return response(res, {
+      status: 500,
+      message: "terjadi error",
+      error,
+    });
+  }
+}
 
 
-module.exports = {  signUp,login };
+module.exports = {  signUp,login,getAllUserByAdmin };

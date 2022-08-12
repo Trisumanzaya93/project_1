@@ -6,8 +6,8 @@ const upload = require('../middlewares/upload')
 
 SeputarikpaRouter
 
-        .get('/',  seputarikpaController.getAllSeputarikpa)
-        .get('/:id',  seputarikpaController.getContentById)
+        .get('/:id_admin',  seputarikpaController.getAllSeputarikpa)
+        .get('/getbyid/:id',  seputarikpaController.getContentById)
         .delete('/:id',  seputarikpaController.deleteContentById)
         .post('/',upload,seputarikpaController.createContent)
 

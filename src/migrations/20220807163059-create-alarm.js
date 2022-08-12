@@ -20,6 +20,9 @@ module.exports = {
       id_admin: {
         type: Sequelize.INTEGER
       },
+      id_user: {
+        type: Sequelize.INTEGER
+      },
       createdAt: {
         allowNull: false,
         type: Sequelize.DATE

@@ -16,7 +16,8 @@ module.exports = (sequelize, DataTypes) => {
   seputarikpa.init({
     title: DataTypes.STRING,
     image: DataTypes.STRING,
-    content: DataTypes.STRING
+    content: DataTypes.STRING,
+    id_admin:DataTypes.INTEGER,
   }, {
     sequelize,
     modelName: 'seputarikpa',
