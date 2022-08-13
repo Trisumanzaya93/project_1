@@ -11,6 +11,7 @@ const createUser = async(req,res)=>{
           return response(res, { status: 400, message: "username sudah terdaftar" });
           const body = req.body
           body.password = await bcrypt.hash(password, 10);
+          console.log(body);
           const result = await model.users.create(body)
         return response(res, {
           data: result,

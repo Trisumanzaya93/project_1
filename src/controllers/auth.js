@@ -71,7 +71,7 @@ const login = async (req,res)=>{
 const getAllUserByAdmin = async (req, res)=>{
   try {
     const id_admin = 3
-    const result = await model.users.findAll({where:{id_admin},attributes:["id","id_admin","username","kodesatker","namasatker"]})
+    const result = await model.users.findAll({where:{id_admin},attributes:["id","id_admin","username","kodesatker","namasatker","id_android"]})
 
     return response(res, {
       data: result,
