@@ -31,12 +31,13 @@ const updateAdmin =async (req,res)=>{
   try {
     const {id} = req.params
     const cekId = await model.Admins.findOne({where:{id}})
-    console.log(cekId);
     if(cekId===null){
       return response(res,{status:404,message:"id tidak ditemukan"})
     }
     const body = req.body
-    body.password = await bcrypt.hash(body.password, 10);
+    if(body.password){
+      body.password = await bcrypt.hash(body.password, 10);
+    }
     const result = await model.Admins.update(body,{where:{id}})
     return response(res,{
       status:200,
