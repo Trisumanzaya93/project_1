@@ -122,7 +122,11 @@ const loginAdmin = async (req,res)=>{
   };
   const token = jwt.sign(payload, process.env.SECRET_KEY, jwtOptions);
     return response(res, {
-      data: token,
+      data: {
+        token,
+        id:result.id,
+        username:result.user_name,
+      },
       status: 200,
       message: "mantapp",
     });
