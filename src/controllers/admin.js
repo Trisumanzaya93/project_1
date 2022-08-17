@@ -36,7 +36,9 @@ const updateUser = async (req,res)=>{
       return response(res,{status:404,message:"id tidak ditemukan"})
     }
     const body = req.body
-    body.password = await bcrypt.hash(body.password, 10);
+    if(body.password){
+      body.password = await bcrypt.hash(body.password, 10);
+    }
     const result = await model.users.update(body,{where:{id}})
     return response(res,{
       status:200,
