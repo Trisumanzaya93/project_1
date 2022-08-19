@@ -88,5 +88,38 @@ const deleteContentById = async(req, res) => {
     });
   }
 }
+const updateContent =async(req,res)=>{
+  try {
+    const {id} = req.params
+    let body = req.body;
+    const image = req.file;
 
-module.exports = { getAllSeputarikpa,createContent,getContentById,deleteContentById };
+    
+    const cekId = await model.seputarikpa.findOne({where:{id}})
+    if(cekId===null){
+      return response(res,{status:404,message:"id tidak ditemukan"})
+    }
+    if(image){
+      body = {
+        ...body,
+        image: image.path,
+      };}
+      const result = await model.seputarikpa.update(body,{where:{id}})
+
+      return response(res, {
+        data: result,
+        status: 200,
+        message: "update berhasil",
+      });
+    
+  } catch (error) {
+    console.log(error);
+    return response(res, {
+      status: 500,
+      message: "terjadi error",
+      error,
+    });
+  }
+}
+
+module.exports = { getAllSeputarikpa,createContent,getContentById,deleteContentById,updateContent };

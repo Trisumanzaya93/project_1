@@ -8,6 +8,7 @@ SeputarikpaRouter
 
         .get('/:id_admin',  seputarikpaController.getAllSeputarikpa)
         .get('/getbyid/:id',  seputarikpaController.getContentById)
+        .patch('/:id',upload,  seputarikpaController.updateContent)
         .delete('/:id',  seputarikpaController.deleteContentById)
         .post('/',upload,seputarikpaController.createContent)
 
