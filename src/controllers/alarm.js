@@ -4,7 +4,6 @@ const response = require("../helpers/response")
 const createAlarm = async (req,res)=>{
     try {
         const body = req.body
-        body.timer =Number(body.timer)  
         const result = await model.Alarm.create(body)
         return response(res, {
             data:result,
