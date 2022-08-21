@@ -19,5 +19,43 @@ const createAlarm = async (req,res)=>{
           });
     }
 }
+const alarmByUserId = async (req,res) => {
+try {
+    const {id} = req.params
+    const result = await model.Alarm.findAll({where:{id_user:id}})
+    console.log(result);
+    if(result.length === 0) return response(res,{status:404,message:"not found"})
+    return response(res,{
+        status:200,
+        message:"succes get",
+        data:result
+    })
+} catch (error) {
+    return response(res, {
+    status: 500,
+    message: "terjadi error",
+    error,
+  });
+    }
+}
 
-module.exports = {createAlarm}
+const deleteAlarm = async (req,res) => {
+    try {
+        const {id} = req.params
+        const result = await model.Alarm.destroy({where:{id}})
+        console.log(result);
+        if(result === 0) return response(res,{status:404,message:"not found"})
+        return response(res,{
+            status:200,
+            message:"succes delete",
+        })
+    } catch (error) {
+        return response(res, {
+        status: 500,
+        message: "terjadi error",
+        error,
+      });
+        }
+    }
+
+module.exports = {createAlarm,alarmByUserId,deleteAlarm}

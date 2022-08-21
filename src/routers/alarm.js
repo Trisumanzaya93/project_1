@@ -5,6 +5,8 @@ const alarmController = require('./../controllers/alarm')
 
 alarmRouter
         .post('/',alarmController.createAlarm)
+        .get('/:id',alarmController.alarmByUserId)
+        .delete('/:id',alarmController.deleteAlarm)
 
 
 
