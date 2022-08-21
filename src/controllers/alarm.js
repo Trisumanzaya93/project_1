@@ -23,8 +23,6 @@ const alarmByUserId = async (req,res) => {
 try {
     const {id} = req.params
     const result = await model.Alarm.findAll({where:{id_user:id}})
-    console.log(result);
-    if(result.length === 0) return response(res,{status:404,message:"not found"})
     return response(res,{
         status:200,
         message:"succes get",
