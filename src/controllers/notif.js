@@ -16,16 +16,24 @@ const notifSend = async (req,res) => {
          const result = await model.users.findOne({where:{id:body.id}})
          if (result.length===0) return res.status(404).json({pesan:"id tidak ditemukan"})
          const token = result.id_android
-        await message.send({
+         
+         const data = await model.Alarm.findOne({where:{id:body.idAlarm}})
+        const result1 = await message.send({
             token: token,
             notification: {
                 title: body.title,
                 body: body.message,
             },
+            data:{
+                title:data.title,
+                description:data.description,
+                date:`${data.timer}`
+            }
         })
         return res.status(200).json({
                   pesan: "notification sent",
-                  token
+                  token,
+                  result1
                 });
     } catch (error) {
         console.log(error);
