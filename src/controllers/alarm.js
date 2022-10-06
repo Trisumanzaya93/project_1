@@ -35,6 +35,23 @@ try {
   });
     }
 }
+const alarmById = async (req,res) => {
+    try {
+        const {id} = req.params
+        const result = await model.Alarm.findOne({where:{id:id}})
+        return response(res,{
+            status:200,
+            message:"succes get by id",
+            data:result
+        })
+    } catch (error) {
+        return response(res, {
+        status: 500,
+        message: "terjadi error",
+        error,
+      });
+        }
+    }
 
 const deleteAlarm = async (req,res) => {
     try {
@@ -55,4 +72,4 @@ const deleteAlarm = async (req,res) => {
         }
     }
 
-module.exports = {createAlarm,alarmByUserId,deleteAlarm}
+module.exports = {createAlarm,alarmByUserId,deleteAlarm, alarmById}

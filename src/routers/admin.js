@@ -8,6 +8,7 @@ admin
         .post('/loginadmin',  adminController.loginAdmin)
         .post('/notif',  notifController.notifSend)
         .post('/notifalluser',  notifController.notifSendAllUser)
+        .post('/notifallAlarm',  notifController.notifAllAlarm)
         .get('/:id_admin',  adminController.getUserByAdmin)
         .post('/',  adminController.createUser)
         .patch('/:id', adminController.updateUser)

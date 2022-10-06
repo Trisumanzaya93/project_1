@@ -44,6 +44,40 @@ const notifSend = async (req,res) => {
     }
 }
 
+const notifAllAlarm = async (req,res) => {
+    const {body} = req
+    try {
+         const result = await model.users.findAll({where:{id_admin:body.id}})
+         await Promise.all(
+             result.map( async(item)=>{
+                 const token = item.id_android
+                if(token){
+                    return await message.send({
+                        token: token,
+                        notification: {
+                            title: body.title,
+                            body: body.message,
+                        },
+                        data:{
+                                    title:body.title,
+                                    description:body.message,
+                                    date:`${body.date}`
+                                }
+                    })
+                }
+            }))
+        return res.status(200).json({
+                  pesan: "notification all alarm sent",
+                });
+    } catch (error) {
+        console.log(error);
+        return res.status(500).json({
+                  pesan: "firebase-server",
+                  error,
+                });
+    }
+}
+
 const notifSendAllUser = async (req,res) => {
     const {body} = req
     try {
@@ -52,13 +86,16 @@ const notifSendAllUser = async (req,res) => {
          await Promise.all(
          result.map( async(item)=>{
              const token = item.id_android
-            return await message.send({
-                token: token,
-                notification: {
-                    title: body.title,
-                    body: body.message,
-                },
-            })
+             if(token){
+                 return await message.send({
+                     token: token,
+                     notification: {
+                         title: body.title,
+                         body: body.message,
+                     },
+                     data:{}
+                 })
+             }
          }))
         return res.status(200).json({
                   pesan: "notification sent",
@@ -73,4 +110,4 @@ const notifSendAllUser = async (req,res) => {
     }
 }
 
-module.exports={notifSend, notifSendAllUser}
+module.exports={notifSend, notifSendAllUser,notifAllAlarm}
