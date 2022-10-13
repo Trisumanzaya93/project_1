@@ -1,3 +1,4 @@
+const dayjs = require("dayjs");
 const admin = require("firebase-admin");
 const key = require("../../private/pais-8b1c5-firebase-adminsdk-zuwqs-b8209e6c35");
 const model = require("../models/index");
@@ -18,6 +19,10 @@ const notifSend = async (req,res) => {
          const token = result.id_android
          
          const data = await model.Alarm.findOne({where:{id:body.idAlarm}})
+         console.log(data.timer);
+         
+        const endDate = dayjs(data.timer).set('hour', 23).set('minute', 59).format() 
+        console.log(endDate);
         const result1 = await message.send({
             token: token,
             notification: {
@@ -27,7 +32,8 @@ const notifSend = async (req,res) => {
             data:{
                 title:data.title,
                 description:data.description,
-                date:`${data.timer}`
+                date:`${data.timer}`,
+                endDate:`${endDate}`
             }
         })
         return res.status(200).json({
