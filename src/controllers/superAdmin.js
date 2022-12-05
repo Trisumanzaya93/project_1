@@ -27,6 +27,7 @@ const createAdmin = async (req, res) => {
     });
   }
 };
+
 const updateAdmin =async (req,res)=>{
   try {
     const {id} = req.params
